@@ -1,0 +1,36 @@
+# Basic Rails stuff
+log
+tmp
+
+# Other ephemeral development files
+.bundle
+tags
+node_modules
+
+# Assets
+doc/*.svg
+doc/*.csv
+doc/dependencies.*
+doc/ux
+public/uploads
+public/assets
+
+# Asset generation
+.sass-cache
+
+# Local configuration
+config/database.yml
+config/secrets.yml
+Procfile.local
+.env.local
+.env.development
+.foreman
+
+# Testing
+coverage
+spec/tmp
+
+# ssl
+*.crt
+*.csr
+*.key
