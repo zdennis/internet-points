@@ -6,14 +6,16 @@ class PointsController < ApplicationController
 
   def create
     person = find_person.first_or_create!
-    points = person.points.create! value: permitted_params[:points]
+    points = person.points.create!(
+      value: permitted_params[:points],
+      message: permitted_params[:message])
     render json: points
   end
 
   private
 
   def permitted_params
-    @permitted_params ||= params.permit(:person_id, :points)
+    @permitted_params ||= params.permit(:person_id, :points, :message)
   end
 
   def find_person
