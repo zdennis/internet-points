@@ -13,8 +13,8 @@ describe "Giving internet points to someone" do
     expect(json_response).to include("value" => 100)
 
     visit "/people/zdennis/points.json"
-    expect(json_response.length).to eq(1)
-    expect(json_response[0]).to include("value" => 100)
+    expect(json_response["points"].length).to eq(1)
+    expect(json_response["points"][0]).to include("value" => 100)
   end
 
   scenario "Pointing an existent person adds to their points" do
@@ -28,7 +28,7 @@ describe "Giving internet points to someone" do
 
     visit "/people/zdennis/points.json"
     expect(page.status_code).to eq 200
-    expect(json_response.empty?).to be true
+    expect(json_response["points"].empty?).to be true
   end
 
 end
