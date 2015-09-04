@@ -36,6 +36,8 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'dotenv-rails'
+  gem 'capybara'
+  gem 'factory_girl_rails'
 end
 
 group :development do

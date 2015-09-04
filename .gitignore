@@ -1,6 +1,7 @@
 # Basic Rails stuff
 log
 tmp
+db/*.sqlite3
 
 # Other ephemeral development files
 .bundle
