@@ -26,19 +26,25 @@ RSpec.describe Person, :type => :model do
 
     describe "#monthly_points" do
       it "returns the sum total of all of the points for the current month" do
-        expect(person.monthly_points).to eq(47)
+        month_range = (Time.zone.now.beginning_of_month.to_i..Time.zone.now.end_of_month.to_i)
+        expected_points = person.points.select{ |p| month_range.include?(p.created_at.to_i) }.map(&:value).sum
+        expect(person.monthly_points).to eq(expected_points)
       end
     end
 
     describe "#daily_points" do
       it "returns the sum total of all of the points for the current month" do
-        expect(person.daily_points).to eq(34)
+        day_range = (Time.zone.now.beginning_of_day.to_i..Time.zone.now.end_of_day.to_i)
+        expected_points = person.points.select{ |p| day_range.include?(p.created_at.to_i) }.map(&:value).sum
+        expect(person.daily_points).to eq(expected_points)
       end
     end
 
     describe "#weekly_points" do
       it "returns the sum total of all of the points for the current month" do
-        expect(person.weekly_points).to eq(52)
+        week_range = (Time.zone.now.beginning_of_week.to_i..Time.zone.now.end_of_week.to_i)
+        expected_points = person.points.select{ |p| week_range.include?(p.created_at.to_i) }.map(&:value).sum
+        expect(person.weekly_points).to eq(expected_points)
       end
     end
   end
