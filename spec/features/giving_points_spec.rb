@@ -23,6 +23,16 @@ describe "Giving internet points to someone" do
     expect(page.status_code).to eq 200
   end
 
+  scenario "Pointing someone is not case-sensitive" do
+    page.driver.post "/people/bob/points/100"
+    page.driver.post "/people/Bob/points/200"
+
+    visit "/people/bob/points.json"
+    expect(json_response["points"].length).to eq(2)
+    expect(json_response["points"][0]).to include("value" => 100)
+    expect(json_response["points"][1]).to include("value" => 200)
+  end
+
   scenario "Pointing can include a message" do
     message = CGI.escape "Awesome test fixins!"
     page.driver.post "/people/bob/points/150?message=#{message}"

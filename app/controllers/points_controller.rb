@@ -19,6 +19,6 @@ class PointsController < ApplicationController
   end
 
   def find_person
-    @person ||= Person.where(nick: permitted_params[:person_id])
+    @person ||= Person.where(nick: permitted_params[:person_id].downcase)
   end
 end

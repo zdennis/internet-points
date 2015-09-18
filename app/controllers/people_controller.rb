@@ -11,7 +11,7 @@ class PeopleController < ApplicationController
   end
 
   def find_person
-    @person ||= Person.where(nick: permitted_params[:id])
+    @person ||= Person.where(nick: permitted_params[:id].downcase)
   end
 
 end
