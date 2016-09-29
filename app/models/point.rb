@@ -1,4 +1,4 @@
-class Point < ActiveRecord::Base
+class Point < ApplicationRecord
   belongs_to :person
 
   scope :during, -> (time_range) do
