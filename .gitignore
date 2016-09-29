@@ -21,7 +21,6 @@ public/assets
 
 # Local configuration
 config/database.yml
-config/secrets.yml
 Procfile.local
 .env.local
 .env.development
