@@ -1,4 +1,9 @@
 class PeopleController < ApplicationController
+  def index
+    people = Person.all
+    render json: people
+  end
+
   def show
     person = find_person.first_or_initialize(nick: permitted_params[:id])
     render json: person
